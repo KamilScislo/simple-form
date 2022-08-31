@@ -11,7 +11,7 @@ describe('Integration tests for ticket form', () => {
         cy.get('#message').type('Test message')
         cy.contains('button', 'Submit').click()
 
-        cy.intercept('POST', '/v2/tickets/new', {
+        cy.intercept('POST', '*/tickets/new', {
             statusCode: 200,
             body: { id: 'ABCD' },
         })
@@ -25,7 +25,7 @@ describe('Integration tests for ticket form', () => {
         cy.get('#message').type('Test message')
         cy.contains('button', 'Submit').click()
 
-        cy.intercept('POST', '/v2/tickets/new', {
+        cy.intercept('POST', '*/tickets/new', {
             statusCode: 500,
             body: { error: 'Internal server error' },
         })
